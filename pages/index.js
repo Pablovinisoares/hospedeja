@@ -1,76 +1,137 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [user, setUser] = useState("");
-  const [logged, setLogged] = useState(false);
+  const [nome, setNome] = useState("");
+  const [checkin, setCheckin] = useState("");
+  const [checkout, setCheckout] = useState("");
+  const [reservas, setReservas] = useState([]);
 
-  const login = () => {
-    if (user.trim()) setLogged(true);
+  // Carrega reservas do LocalStorage ao abrir a página
+  useEffect(() => {
+    const armazenadas = localStorage.getItem("reservas");
+    if (armazenadas) {
+      setReservas(JSON.parse(armazenadas));
+    }
+  }, []);
+
+  // Atualiza LocalStorage sempre que reservas mudarem
+  useEffect(() => {
+    localStorage.setItem("reservas", JSON.stringify(reservas));
+  }, [reservas]);
+
+  const adicionarReserva = () => {
+    if (nome && checkin && checkout) {
+      const nova = { nome, checkin, checkout };
+      setReservas([...reservas, nova]);
+      setNome("");
+      setCheckin("");
+      setCheckout("");
+    }
   };
 
-  const imagemFundo =
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1350&q=80";
+  const removerReserva = (index) => {
+    const novas = reservas.filter((_, i) => i !== index);
+    setReservas(novas);
+  };
 
-  if (!logged) {
-    return (
-      <div
-        style={{
-          backgroundImage: `url(${imagemFundo})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "white",
-          textShadow: "2px 2px 5px rgba(0,0,0,0.8)",
-          padding: 20,
-        }}
-      >
-        <h1 style={{ fontSize: "3.5rem", marginBottom: "10px" }}>HospedeJá</h1>
-        <p style={{ fontSize: "1.3rem", marginBottom: 30 }}>
-          Gerencie suas pousadas e resorts com facilidade.
-        </p>
-        <input
-          placeholder="Digite seu nome"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-          style={{
-            padding: "12px",
-            fontSize: "16px",
-            borderRadius: "8px",
-            border: "none",
-            marginBottom: "10px",
-            width: "280px",
-            boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-            color: "#333",
-          }}
-        />
-        <button
-          onClick={login}
-          style={{
-            padding: "12px 24px",
-            fontSize: "16px",
-            borderRadius: "8px",
-            border: "none",
-            backgroundColor: "#14b8a6",
-            color: "white",
-            cursor: "pointer",
-            fontWeight: "600",
-            boxShadow: "0 4px 8px rgba(0,0,0,0.3)",
-          }}
-        >
-          Entrar
-        </button>
-      </div>
-    );
-  }
+  const gerarRelatorio = () => {
+    let texto = "📋 RELATÓRIO DE RESERVAS:\n\n";
+    reservas.forEach((r, i) => {
+      texto += `${i + 1}. ${r.nome} – Entrada: ${r.checkin}, Saída: ${r.checkout}\n`;
+    });
+    navigator.clipboard.writeText(texto);
+    alert("Relatório copiado! Agora você pode colar no WhatsApp ou Word.");
+  };
 
   return (
-    <div style={{ fontFamily: "'Poppins', sans-serif", padding: 40 }}>
-      <h2 style={{ color: "#0a9477" }}>Bem-vindo, {user}!</h2>
-      <p>Em breve: painel administrativo.</p>
+    <div style={{ fontFamily: "Poppins, sans-serif", padding: 30 }}>
+      <h1 style={{ color: "#0a9477" }}>HospedeJá - Reservas</h1>
+
+      <div style={{ marginBottom: 20 }}>
+        <input
+          placeholder="Nome do hóspede"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          style={estilos.input}
+        />
+        <input
+          type="date"
+          value={checkin}
+          onChange={(e) => setCheckin(e.target.value)}
+          style={estilos.input}
+        />
+        <input
+          type="date"
+          value={checkout}
+          onChange={(e) => setCheckout(e.target.value)}
+          style={estilos.input}
+        />
+        <button onClick={adicionarReserva} style={estilos.botao}>
+          Adicionar
+        </button>
+      </div>
+
+      <h3 style={{ marginTop: 30 }}>📌 Reservas</h3>
+      {reservas.length === 0 && <p>Nenhuma reserva ainda.</p>}
+      <ul>
+        {reservas.map((r, i) => (
+          <li key={i} style={{ marginBottom: 10 }}>
+            <b>{r.nome}</b> – {r.checkin} até {r.checkout}
+            <button
+              onClick={() => removerReserva(i)}
+              style={estilos.botaoRemover}
+            >
+              Remover
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      {reservas.length > 0 && (
+        <button onClick={gerarRelatorio} style={estilos.botaoRelatorio}>
+          📄 Copiar relatório
+        </button>
+      )}
     </div>
   );
 }
+
+const estilos = {
+  input: {
+    padding: 10,
+    marginRight: 10,
+    marginBottom: 10,
+    borderRadius: 6,
+    border: "1px solid #ccc",
+    fontSize: 16,
+  },
+  botao: {
+    padding: "10px 20px",
+    borderRadius: 6,
+    border: "none",
+    backgroundColor: "#14b8a6",
+    color: "white",
+    fontWeight: "bold",
+    cursor: "pointer",
+  },
+  botaoRemover: {
+    marginLeft: 10,
+    padding: "4px 10px",
+    fontSize: 14,
+    borderRadius: 6,
+    backgroundColor: "#e11d48",
+    color: "white",
+    border: "none",
+    cursor: "pointer",
+  },
+  botaoRelatorio: {
+    marginTop: 20,
+    padding: "10px 20px",
+    fontSize: 16,
+    borderRadius: 8,
+    backgroundColor: "#0a9477",
+    color: "white",
+    border: "none",
+    cursor: "pointer",
+  },
+};
