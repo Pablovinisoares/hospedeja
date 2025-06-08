@@ -6,8 +6,7 @@ export default function Home() {
   const [checkout, setCheckout] = useState("");
   const [reservas, setReservas] = useState([]);
 
-  const imagemFundo =
-    "https://images.unsplash.com/photo-1584448093330-d98f5ab2e7e3?auto=format&fit=crop&w=1400&q=80";
+  const imagemFundo = "https://images.unsplash.com/photo-1601312741083-df6a3f74a6c6?auto=format&fit=crop&w=1400&q=80";
 
   useEffect(() => {
     const salvas = localStorage.getItem("reservas");
@@ -68,12 +67,12 @@ export default function Home() {
           padding: 30,
         }}
       >
-        <h1 style={{ fontSize: "3rem" }}>🏖️ Praia Bela Pousada</h1>
-        <p style={{ fontSize: "1.2rem" }}>Sistema simples e bonito de reservas.</p>
+        <h1 style={{ fontSize: "3rem" }}>🌊 Pousada Recife Praia</h1>
+        <p style={{ fontSize: "1.2rem" }}>Sistema de reservas simples e bonito</p>
       </div>
 
       <div style={{ padding: 30, maxWidth: 600, margin: "0 auto" }}>
-        <h2 style={{ color: "#0277bd" }}>Adicionar Reserva</h2>
+        <h2 style={{ color: "#0277bd" }}>Nova Reserva</h2>
 
         <input
           placeholder="Nome do hóspede"
@@ -97,16 +96,13 @@ export default function Home() {
           ➕ Adicionar
         </button>
 
-        <h3 style={{ marginTop: 30 }}>📌 Reservas atuais</h3>
+        <h3 style={{ marginTop: 30 }}>📌 Reservas</h3>
         {reservas.length === 0 && <p>Nenhuma reserva ainda.</p>}
         <ul>
           {reservas.map((r, i) => (
             <li key={i} style={{ marginBottom: 10 }}>
               <b>{r.nome}</b> – {r.checkin} até {r.checkout}
-              <button
-                onClick={() => remover(i)}
-                style={estilo.botaoRemover}
-              >
+              <button onClick={() => remover(i)} style={estilo.botaoRemover}>
                 Remover
               </button>
             </li>
