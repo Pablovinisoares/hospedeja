@@ -6,9 +6,8 @@ export default function Home() {
   const [checkout, setCheckout] = useState("");
   const [reservas, setReservas] = useState([]);
 
-  // Imagem bonita de pousada no Nordeste
   const imagemFundo =
-    "https://images.unsplash.com/photo-1600110206297-c85e1a7f7d2b?auto=format&fit=crop&w=1400&q=80";
+    "https://images.unsplash.com/photo-1613061529720-0ad838da02eb?auto=format&fit=crop&w=1400&q=80";
 
   useEffect(() => {
     const salvas = localStorage.getItem("reservas");
@@ -53,30 +52,30 @@ export default function Home() {
   };
 
   return (
-    <div style={{ fontFamily: "Poppins, sans-serif", backgroundColor: "#fefefe" }}>
+    <div style={{ fontFamily: "Poppins, sans-serif", backgroundColor: "#f9fbfc" }}>
       <div
         style={{
           backgroundImage: `url(${imagemFundo})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          minHeight: "50vh",
+          minHeight: "60vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
           color: "#fff",
-          textShadow: "2px 2px 8px rgba(0,0,0,0.7)",
-          padding: 20,
+          textShadow: "2px 2px 6px rgba(0,0,0,0.7)",
+          padding: 30,
         }}
       >
-        <h1 style={{ fontSize: "3rem" }}>🌴 Pousada Nordeste</h1>
+        <h1 style={{ fontSize: "3rem" }}>🌊 Pousada Paraíso</h1>
         <p style={{ fontSize: "1.2rem" }}>
-          Sistema simples e gratuito para controle de reservas.
+          Controle de reservas simples, bonito e gratuito.
         </p>
       </div>
 
       <div style={{ padding: 30, maxWidth: 600, margin: "0 auto" }}>
-        <h2 style={{ color: "#008080" }}>Adicionar Reserva</h2>
+        <h2 style={{ color: "#00695c" }}>Adicionar Reserva</h2>
 
         <input
           placeholder="Nome do hóspede"
@@ -122,7 +121,7 @@ export default function Home() {
               📄 Copiar relatório
             </button>
             <button onClick={enviarWhatsapp} style={estilo.botaoWhatsapp}>
-              📲 Enviar via WhatsApp
+              📲 Enviar WhatsApp
             </button>
           </>
         )}
@@ -133,8 +132,8 @@ export default function Home() {
 
 const estilo = {
   input: {
-    padding: 10,
-    margin: "10px 10px 10px 0",
+    padding: 12,
+    margin: "10px 0",
     width: "100%",
     borderRadius: 6,
     border: "1px solid #ccc",
@@ -142,10 +141,10 @@ const estilo = {
     backgroundColor: "#fff",
   },
   botao: {
-    padding: "10px 20px",
+    padding: "12px 24px",
     borderRadius: 6,
     border: "none",
-    backgroundColor: "#008080",
+    backgroundColor: "#00695c",
     color: "white",
     fontWeight: "bold",
     cursor: "pointer",
@@ -156,7 +155,7 @@ const estilo = {
     padding: "4px 10px",
     fontSize: 14,
     borderRadius: 6,
-    backgroundColor: "#d9534f",
+    backgroundColor: "#c62828",
     color: "white",
     border: "none",
     cursor: "pointer",
@@ -166,7 +165,7 @@ const estilo = {
     padding: "10px 20px",
     fontSize: 16,
     borderRadius: 8,
-    backgroundColor: "#20c997",
+    backgroundColor: "#1976d2",
     color: "white",
     border: "none",
     cursor: "pointer",
