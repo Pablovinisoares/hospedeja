@@ -5,7 +5,6 @@ export default function Home() {
   const [logged, setLogged] = useState(false);
   const [selecao, setSelecao] = useState("hospedes");
 
-  // Dados do painel:
   const [hospedes, setHospedes] = useState([]);
   const [reservas, setReservas] = useState([]);
   const [hoteis, setHoteis] = useState([]);
@@ -20,9 +19,10 @@ export default function Home() {
     setSelecao("hospedes");
   };
 
- // Imagem de fundo (resort e pousada)
+  // Imagem de fundo (resort na praia)
   const imagemFundo =
-    "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1350&q=80";
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80";
+
   if (!logged) {
     return (
       <div
