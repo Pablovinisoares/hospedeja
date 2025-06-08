@@ -20,8 +20,9 @@ export default function Home() {
     setSelecao("hospedes");
   };
 
-  const imagemFundo = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1350&q=80";
-
+ // Imagem de fundo (resort e pousada)
+  const imagemFundo =
+    "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1350&q=80";
   if (!logged) {
     return (
       <div
