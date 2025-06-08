@@ -22,7 +22,7 @@ export default function Home() {
 
   // Imagem de fundo (resort e pousada)
   const imagemFundo =
-    "	https://images.unsplash.com/photo-1507089947368-19c1da9775ae;
+    "https://images.unsplash.com/photo-1507089947368-19c1da9775ae;
 
   if (!logged) {
     return (
