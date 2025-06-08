@@ -19,9 +19,9 @@ export default function Home() {
     setSelecao("hospedes");
   };
 
-  // Imagem de fundo (resort na praia)
+  // Imagem de fundo: resort na praia do Nordeste (praia paradisíaca)
   const imagemFundo =
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80";
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1350&q=80";
 
   if (!logged) {
     return (
