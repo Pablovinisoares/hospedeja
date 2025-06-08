@@ -10,7 +10,7 @@ export default function Home() {
     if (user.trim()) setLogged(true);
   };
 
-  const imagemFundo = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1350&q=80";
+  const imagemFundo = https://images.unsplash.com/photo-1507089947368-19c1da9775ae
 
   if (!logged) {
     return (
