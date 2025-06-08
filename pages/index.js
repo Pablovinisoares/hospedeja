@@ -6,7 +6,8 @@ export default function Home() {
   const [checkout, setCheckout] = useState("");
   const [reservas, setReservas] = useState([]);
 
-  const imagemFundo = "https://images.unsplash.com/photo-1601312741083-df6a3f74a6c6?auto=format&fit=crop&w=1400&q=80";
+  // 🏖️ Imagem real da praia de Recife
+  const imagemFundo = "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&w=1500&q=80";
 
   useEffect(() => {
     const salvas = localStorage.getItem("reservas");
@@ -68,7 +69,7 @@ export default function Home() {
         }}
       >
         <h1 style={{ fontSize: "3rem" }}>🌊 Pousada Recife Praia</h1>
-        <p style={{ fontSize: "1.2rem" }}>Sistema de reservas simples e bonito</p>
+        <p style={{ fontSize: "1.2rem" }}>Sistema de reservas simples, moderno e gratuito</p>
       </div>
 
       <div style={{ padding: 30, maxWidth: 600, margin: "0 auto" }}>
@@ -112,10 +113,10 @@ export default function Home() {
         {reservas.length > 0 && (
           <>
             <button onClick={gerarRelatorio} style={estilo.botaoRelatorio}>
-              📄 Copiar relatório
+              📄 Copiar para Word
             </button>
             <button onClick={enviarWhatsapp} style={estilo.botaoWhatsapp}>
-              📲 Enviar WhatsApp
+              📲 Enviar no WhatsApp
             </button>
           </>
         )}
