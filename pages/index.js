@@ -6,8 +6,7 @@ export default function Home() {
   const [checkout, setCheckout] = useState("");
   const [reservas, setReservas] = useState([]);
 
-  // 🏖️ Imagem real da praia de Recife
-  const imagemFundo = "https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&w=1500&q=80";
+  const imagemFundo = "https://images.unsplash.com/photo-1501117716987-c8e1ecb210d1?auto=format&fit=crop&w=1500&q=80"; // resort
 
   useEffect(() => {
     const salvas = localStorage.getItem("reservas");
@@ -34,16 +33,16 @@ export default function Home() {
   };
 
   const gerarRelatorio = () => {
-    let texto = "📋 RELATÓRIO DE RESERVAS:\n\n";
+    let texto = "📋 RELATÓRIO DE RESERVAS - HospedeJá\n\n";
     reservas.forEach((r, i) => {
       texto += `${i + 1}. ${r.nome} – Entrada: ${r.checkin}, Saída: ${r.checkout}\n`;
     });
     navigator.clipboard.writeText(texto);
-    alert("Relatório copiado! Cole no Word ou WhatsApp.");
+    alert("Relatório copiado! Agora cole no Word ou WhatsApp.");
   };
 
   const enviarWhatsapp = () => {
-    let texto = "📋 RELATÓRIO DE RESERVAS:\n\n";
+    let texto = "📋 RELATÓRIO DE RESERVAS - HospedeJá\n\n";
     reservas.forEach((r, i) => {
       texto += `${i + 1}. ${r.nome} – Entrada: ${r.checkin}, Saída: ${r.checkout}\n`;
     });
@@ -52,7 +51,7 @@ export default function Home() {
   };
 
   return (
-    <div style={{ fontFamily: "Poppins, sans-serif", backgroundColor: "#f0f9ff" }}>
+    <div style={{ fontFamily: "Poppins, sans-serif", backgroundColor: "#f7fbff" }}>
       <div
         style={{
           backgroundImage: `url(${imagemFundo})`,
@@ -66,14 +65,15 @@ export default function Home() {
           color: "#fff",
           textShadow: "2px 2px 6px rgba(0,0,0,0.7)",
           padding: 30,
+          textAlign: "center"
         }}
       >
-        <h1 style={{ fontSize: "3rem" }}>🌊 Pousada Recife Praia</h1>
-        <p style={{ fontSize: "1.2rem" }}>Sistema de reservas simples, moderno e gratuito</p>
+        <h1 style={{ fontSize: "3.5rem", marginBottom: 0 }}>HospedeJá</h1>
+        <p style={{ fontSize: "1.5rem" }}>Hospedagem simples e descomplicada</p>
       </div>
 
       <div style={{ padding: 30, maxWidth: 600, margin: "0 auto" }}>
-        <h2 style={{ color: "#0277bd" }}>Nova Reserva</h2>
+        <h2 style={{ color: "#0288d1" }}>Nova Reserva</h2>
 
         <input
           placeholder="Nome do hóspede"
