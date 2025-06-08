@@ -6,7 +6,7 @@ export default function Home() {
   const [checkout, setCheckout] = useState("");
   const [reservas, setReservas] = useState([]);
 
-  const imagemFundo = "https://images.unsplash.com/photo-1501117716987-c8e1ecb210d1?auto=format&fit=crop&w=1500&q=80"; // resort
+  const imagemFundo = "https://images.unsplash.com/photo-1603394028895-a7f73c2d3e3f?auto=format&fit=crop&w=1500&q=80";
 
   useEffect(() => {
     const salvas = localStorage.getItem("reservas");
@@ -38,7 +38,7 @@ export default function Home() {
       texto += `${i + 1}. ${r.nome} – Entrada: ${r.checkin}, Saída: ${r.checkout}\n`;
     });
     navigator.clipboard.writeText(texto);
-    alert("Relatório copiado! Agora cole no Word ou WhatsApp.");
+    alert("Relatório copiado! Cole no Word ou envie no WhatsApp.");
   };
 
   const enviarWhatsapp = () => {
@@ -51,7 +51,7 @@ export default function Home() {
   };
 
   return (
-    <div style={{ fontFamily: "Poppins, sans-serif", backgroundColor: "#f7fbff" }}>
+    <div style={{ fontFamily: "Poppins, sans-serif", backgroundColor: "#f0faff" }}>
       <div
         style={{
           backgroundImage: `url(${imagemFundo})`,
@@ -73,7 +73,7 @@ export default function Home() {
       </div>
 
       <div style={{ padding: 30, maxWidth: 600, margin: "0 auto" }}>
-        <h2 style={{ color: "#0288d1" }}>Nova Reserva</h2>
+        <h2 style={{ color: "#0077b6" }}>Nova Reserva</h2>
 
         <input
           placeholder="Nome do hóspede"
@@ -139,7 +139,7 @@ const estilo = {
     padding: "12px 24px",
     borderRadius: 6,
     border: "none",
-    backgroundColor: "#0288d1",
+    backgroundColor: "#00b4d8",
     color: "white",
     fontWeight: "bold",
     cursor: "pointer",
@@ -150,7 +150,7 @@ const estilo = {
     padding: "4px 10px",
     fontSize: 14,
     borderRadius: 6,
-    backgroundColor: "#e53935",
+    backgroundColor: "#e63946",
     color: "white",
     border: "none",
     cursor: "pointer",
@@ -160,7 +160,7 @@ const estilo = {
     padding: "10px 20px",
     fontSize: 16,
     borderRadius: 8,
-    backgroundColor: "#1e88e5",
+    backgroundColor: "#023e8a",
     color: "white",
     border: "none",
     cursor: "pointer",
