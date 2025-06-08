@@ -6,8 +6,7 @@ export default function Home() {
   const [checkout, setCheckout] = useState("");
   const [reservas, setReservas] = useState([]);
 
-  const imagemFundo =
-    "https://images.unsplash.com/photo-1588854337236-f79e2c1242d7?auto=format&fit=crop&w=1500&q=80"; // Resort com praia
+ const imagemFundo = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1350&q=80";
 
   useEffect(() => {
     const salvas = localStorage.getItem("reservas");
