@@ -40,82 +40,82 @@ export default function Home() {
           padding: 20,
         }}
       >
-        <h1 style={{ fontSize: "3.5rem", marginBottom: "10px" }}>HospedeJá</h1>
-        <p style={{ fontSize: "1.3rem", marginBottom: 30 }}>
-          Sua pousada, hotel ou resort sempre organizada.
-        </p>
-        <input
-          placeholder="Digite seu nome"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-          style={{
-            padding: "12px",
-            fontSize: "16px",
-            borderRadius: "8px",
-            border: "none",
-            marginBottom: "10px",
-            width: "280px",
-          }}
-        />
-        <button
-          onClick={login}
-          style={{
-            padding: "12px 24px",
-            fontSize: "16px",
-            borderRadius: "8px",
-            border: "none",
-            backgroundColor: "#00c38e",
-            color: "white",
-            cursor: "pointer",
-          }}
-        >
-          Entrar
-        </button>
-      </div>
-    );
-  }
+        const styles = {
+  input: {
+    padding: 12,
+    fontSize: 16,
+    borderRadius: 8,
+    border: "1px solid #ccc",
+    marginBottom: 15,
+    width: "280px",
+    boxShadow: "0 1px 4px rgba(0,0,0,0.1)",
+  },
+  button: {
+    padding: "12px 24px",
+    fontSize: 16,
+    borderRadius: 8,
+    border: "none",
+    backgroundColor: "#14b8a6",
+    color: "white",
+    cursor: "pointer",
+    fontWeight: 600,
+    transition: "background-color 0.3s ease",
+  },
+  buttonRemove: {
+    padding: "6px 12px",
+    fontSize: 14,
+    borderRadius: 8,
+    border: "none",
+    backgroundColor: "#e63946",
+    color: "white",
+    marginLeft: 10,
+    cursor: "pointer",
+    fontWeight: 600,
+    transition: "background-color 0.3s ease",
+  },
+  header: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderBottom: "2px solid #0a9477",
+    paddingBottom: 15,
+    marginBottom: 20,
+  },
+  nav: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  navButton: {
+    padding: "10px 24px",
+    marginRight: 12,
+    borderRadius: 8,
+    border: "2px solid #0a9477",
+    backgroundColor: "white",
+    color: "#0a9477",
+    cursor: "pointer",
+    fontWeight: 600,
+    transition: "all 0.3s ease",
+  },
+  navButtonActive: {
+    padding: "10px 24px",
+    marginRight: 12,
+    borderRadius: 8,
+    border: "none",
+    backgroundColor: "#0a9477",
+    color: "white",
+    cursor: "pointer",
+    fontWeight: 600,
+    transition: "all 0.3s ease",
+  },
+  select: {
+    padding: 10,
+    fontSize: 16,
+    borderRadius: 8,
+    border: "1px solid #ccc",
+    boxShadow: "0 1px 4px rgba(0,0,0,0.1)",
+  },
+};
 
-  return (
-    <div style={{ fontFamily: "Arial", padding: 20 }}>
-      <header style={styles.header}>
-        <h2 style={{ color: "#00c38e" }}>Painel Administrativo - {user}</h2>
-        <button
-          onClick={logout}
-          style={{ ...styles.button, backgroundColor: "#ff4d4d" }}
-        >
-          Sair
-        </button>
-      </header>
-
-      <nav style={styles.nav}>
-        <button
-          style={
-            selecao === "hospedes" ? styles.navButtonActive : styles.navButton
-          }
-          onClick={() => setSelecao("hospedes")}
-        >
-          Hóspedes
-        </button>
-        <button
-          style={
-            selecao === "reservas" ? styles.navButtonActive : styles.navButton
-          }
-          onClick={() => setSelecao("reservas")}
-        >
-          Reservas
-        </button>
-        <button
-          style={selecao === "hoteis" ? styles.navButtonActive : styles.navButton}
-          onClick={() => setSelecao("hoteis")}
-        >
-          Pousadas/Hotéis
-        </button>
-      </nav>
-
-      <section style={{ marginTop: 20 }}>
-        {selecao === "hospedes" && (
-          <HospedesSection hospedes={hospedes} setHospedes={setHospedes} />
-        )}
         {selecao === "reservas" && (
           <ReservasSection
             reservas={reservas}
