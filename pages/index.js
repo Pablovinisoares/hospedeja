@@ -6,8 +6,9 @@ export default function Home() {
   const [checkout, setCheckout] = useState("");
   const [reservas, setReservas] = useState([]);
 
+  // Imagem bonita de pousada no Nordeste
   const imagemFundo =
-    "https://images.unsplash.com/photo-1570077188671-c29c5b0a2f7c?auto=format&fit=crop&w=1350&q=80";
+    "https://images.unsplash.com/photo-1600110206297-c85e1a7f7d2b?auto=format&fit=crop&w=1400&q=80";
 
   useEffect(() => {
     const salvas = localStorage.getItem("reservas");
@@ -39,7 +40,7 @@ export default function Home() {
       texto += `${i + 1}. ${r.nome} – Entrada: ${r.checkin}, Saída: ${r.checkout}\n`;
     });
     navigator.clipboard.writeText(texto);
-    alert("Relatório copiado! Cole no WhatsApp ou Word.");
+    alert("Relatório copiado! Agora cole no WhatsApp ou Word.");
   };
 
   const enviarWhatsapp = () => {
@@ -52,7 +53,7 @@ export default function Home() {
   };
 
   return (
-    <div style={{ fontFamily: "Poppins, sans-serif" }}>
+    <div style={{ fontFamily: "Poppins, sans-serif", backgroundColor: "#fefefe" }}>
       <div
         style={{
           backgroundImage: `url(${imagemFundo})`,
@@ -63,19 +64,19 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          color: "white",
-          textShadow: "2px 2px 6px rgba(0,0,0,0.8)",
+          color: "#fff",
+          textShadow: "2px 2px 8px rgba(0,0,0,0.7)",
           padding: 20,
         }}
       >
-        <h1 style={{ fontSize: "3rem" }}>🌴 Pousada Paraíso</h1>
+        <h1 style={{ fontSize: "3rem" }}>🌴 Pousada Nordeste</h1>
         <p style={{ fontSize: "1.2rem" }}>
-          Controle de reservas simples, bonito e gratuito.
+          Sistema simples e gratuito para controle de reservas.
         </p>
       </div>
 
       <div style={{ padding: 30, maxWidth: 600, margin: "0 auto" }}>
-        <h2 style={{ color: "#0a9477" }}>Adicionar reserva</h2>
+        <h2 style={{ color: "#008080" }}>Adicionar Reserva</h2>
 
         <input
           placeholder="Nome do hóspede"
@@ -138,12 +139,13 @@ const estilo = {
     borderRadius: 6,
     border: "1px solid #ccc",
     fontSize: 16,
+    backgroundColor: "#fff",
   },
   botao: {
     padding: "10px 20px",
     borderRadius: 6,
     border: "none",
-    backgroundColor: "#14b8a6",
+    backgroundColor: "#008080",
     color: "white",
     fontWeight: "bold",
     cursor: "pointer",
@@ -154,7 +156,7 @@ const estilo = {
     padding: "4px 10px",
     fontSize: 14,
     borderRadius: 6,
-    backgroundColor: "#e11d48",
+    backgroundColor: "#d9534f",
     color: "white",
     border: "none",
     cursor: "pointer",
@@ -164,7 +166,7 @@ const estilo = {
     padding: "10px 20px",
     fontSize: 16,
     borderRadius: 8,
-    backgroundColor: "#0a9477",
+    backgroundColor: "#20c997",
     color: "white",
     border: "none",
     cursor: "pointer",
@@ -181,4 +183,3 @@ const estilo = {
     cursor: "pointer",
   },
 };
-
