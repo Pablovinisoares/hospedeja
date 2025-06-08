@@ -1,10 +1,18 @@
 import { useState } from 'react';
 
+const imagens = [
+  "https://images.unsplash.com/photo-1501117716987-c8e0c6f3c9fc", // Praia
+  "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",     // Fazenda
+  "https://images.unsplash.com/photo-1507089947368-19c1da9775ae", // Hotel com piscina
+  "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",     // Campo
+];
+
 export default function Home() {
   const [user, setUser] = useState('');
   const [logged, setLogged] = useState(false);
   const [hospedes, setHospedes] = useState([]);
   const [reservas, setReservas] = useState([]);
+  const imagemAleatoria = imagens[Math.floor(Math.random() * imagens.length)];
 
   const login = () => {
     if (user.trim()) setLogged(true);
@@ -13,17 +21,20 @@ export default function Home() {
   if (!logged) {
     return (
       <div style={{
-        backgroundImage: 'url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c")',
+        backgroundImage: `url(${imagemAleatoria})`,
         backgroundSize: 'cover',
+        backgroundPosition: 'center',
         height: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         color: 'white',
-        textShadow: '1px 1px 2px black'
+        textShadow: '2px 2px 5px black',
+        padding: 20
       }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>Bem-vindo ao HospedeJá</h1>
+        <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>HospedeJá</h1>
+        <p style={{ fontSize: '1.2rem', marginBottom: 30 }}>Gerencie sua pousada, hotel ou fazenda de forma simples.</p>
         <input
           placeholder="Digite seu nome"
           value={user}
@@ -31,7 +42,7 @@ export default function Home() {
           style={{
             padding: '10px',
             fontSize: '16px',
-            borderRadius: '5px',
+            borderRadius: '8px',
             border: 'none',
             marginBottom: '10px',
             width: '250px'
@@ -42,7 +53,7 @@ export default function Home() {
           style={{
             padding: '10px 20px',
             fontSize: '16px',
-            borderRadius: '5px',
+            borderRadius: '8px',
             border: 'none',
             backgroundColor: '#00c38e',
             color: 'white',
@@ -127,4 +138,5 @@ function FormReserva({ hospedes, onAdd }) {
     </div>
   );
 }
+
 
