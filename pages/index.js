@@ -34,7 +34,7 @@ export default function Home() {
         padding: 20
       }}>
         <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>HospedeJá</h1>
-        <p style={{ fontSize: '1.2rem', marginBottom: 30 }}>Gerencie sua pousada, hotel ou de forma simples.</p>
+        <p style={{ fontSize: '1.2rem', marginBottom: 30 }}>Gerencie sua pousada ou hotel de forma simples.</p>
         <input
           placeholder="Digite seu nome"
           value={user}
