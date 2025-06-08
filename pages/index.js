@@ -176,4 +176,7 @@ const estilo = {
     cursor: "pointer",
   },
 };
+<a href="/dashboard" style={{ marginTop: 20, fontSize: 18, color: '#fff', background: '#0077b6', padding: '10px 20px', borderRadius: 6, textDecoration: 'none' }}>
+  Acessar Painel
+</a>
 
