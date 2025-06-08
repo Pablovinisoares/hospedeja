@@ -1,27 +1,21 @@
 import { useState } from 'react';
 
-const imagens = [
-  "https://images.unsplash.com/photo-1501117716987-c8e0c6f3c9fc", // Praia
-  "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",     // Fazenda
-  "https://images.unsplash.com/photo-1507089947368-19c1da9775ae", // Hotel com piscina
-  "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb",     // Campo
-];
-
 export default function Home() {
   const [user, setUser] = useState('');
   const [logged, setLogged] = useState(false);
   const [hospedes, setHospedes] = useState([]);
   const [reservas, setReservas] = useState([]);
-  const imagemAleatoria = imagens[Math.floor(Math.random() * imagens.length)];
 
   const login = () => {
     if (user.trim()) setLogged(true);
   };
 
+  const imagemFundo = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1350&q=80";
+
   if (!logged) {
     return (
       <div style={{
-        backgroundImage: `url(${imagemAleatoria})`,
+        backgroundImage: `url(${imagemFundo})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
@@ -33,25 +27,25 @@ export default function Home() {
         textShadow: '2px 2px 5px black',
         padding: 20
       }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>HospedeJá</h1>
-        <p style={{ fontSize: '1.2rem', marginBottom: 30 }}>Gerencie sua pousada, hotel ou fazenda de forma simples.</p>
+        <h1 style={{ fontSize: '3.5rem', marginBottom: '10px' }}>HospedeJá</h1>
+        <p style={{ fontSize: '1.3rem', marginBottom: 30 }}>Sua pousada, hotel ou resort sempre organizada.</p>
         <input
           placeholder="Digite seu nome"
           value={user}
           onChange={e => setUser(e.target.value)}
           style={{
-            padding: '10px',
+            padding: '12px',
             fontSize: '16px',
             borderRadius: '8px',
             border: 'none',
             marginBottom: '10px',
-            width: '250px'
+            width: '260px'
           }}
         />
         <button
           onClick={login}
           style={{
-            padding: '10px 20px',
+            padding: '12px 24px',
             fontSize: '16px',
             borderRadius: '8px',
             border: 'none',
@@ -138,5 +132,3 @@ function FormReserva({ hospedes, onAdd }) {
     </div>
   );
 }
-
-
