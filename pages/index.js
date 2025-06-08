@@ -22,7 +22,13 @@ export default function Home() {
 
   // Imagem de fundo (resort e pousada)
   const imagemFundo =
-    "https://images.unsplash.com/photo-1507089947368-19c1da9775ae;
+    | Tipo               | Link para usar                                                 |
+| ------------------ | -------------------------------------------------------------- |
+| Praia tropical     | `https://images.unsplash.com/photo-1507525428034-b723cf961d3e` |
+| Resort com piscina | `https://images.unsplash.com/photo-1507089947368-19c1da9775ae` |
+| Hotel elegante     | `https://images.unsplash.com/photo-1542314831-068cd1dbfeeb`    |
+| Fazenda campo      | `https://images.unsplash.com/photo-1588854337221-df1a79d8d29e` |
+
 
   if (!logged) {
     return (
