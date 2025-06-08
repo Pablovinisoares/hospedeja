@@ -3,39 +3,73 @@ import { useState } from "react";
 export default function Home() {
   const [user, setUser] = useState("");
   const [logged, setLogged] = useState(false);
+  const [selecao, setSelecao] = useState("hospedes");
 
   // Dados do painel:
   const [hospedes, setHospedes] = useState([]);
   const [reservas, setReservas] = useState([]);
   const [hoteis, setHoteis] = useState([]);
 
-  // Controle de seção do painel (hóspedes, reservas, hotéis)
-  const [selecao, setSelecao] = useState("hospedes");
-
-  // Login simples:
   const login = () => {
     if (user.trim()) setLogged(true);
   };
 
-  // Logout:
   const logout = () => {
     setLogged(false);
     setUser("");
+    setSelecao("hospedes");
   };
+
+  // Imagem de fundo (resort e pousada)
+  const imagemFundo =
+    "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1350&q=80";
 
   if (!logged) {
     return (
-      <div style={styles.loginContainer}>
-        <h1 style={{ fontSize: "3rem", marginBottom: "20px", color: "#00c38e" }}>
-          HospedeJá
-        </h1>
+      <div
+        style={{
+          backgroundImage: `url(${imagemFundo})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+          textShadow: "2px 2px 5px rgba(0,0,0,0.8)",
+          padding: 20,
+        }}
+      >
+        <h1 style={{ fontSize: "3.5rem", marginBottom: "10px" }}>HospedeJá</h1>
+        <p style={{ fontSize: "1.3rem", marginBottom: 30 }}>
+          Sua pousada, hotel ou resort sempre organizada.
+        </p>
         <input
           placeholder="Digite seu nome"
           value={user}
           onChange={(e) => setUser(e.target.value)}
-          style={styles.input}
+          style={{
+            padding: "12px",
+            fontSize: "16px",
+            borderRadius: "8px",
+            border: "none",
+            marginBottom: "10px",
+            width: "280px",
+          }}
         />
-        <button onClick={login} style={styles.button}>
+        <button
+          onClick={login}
+          style={{
+            padding: "12px 24px",
+            fontSize: "16px",
+            borderRadius: "8px",
+            border: "none",
+            backgroundColor: "#00c38e",
+            color: "white",
+            cursor: "pointer",
+          }}
+        >
           Entrar
         </button>
       </div>
@@ -46,21 +80,27 @@ export default function Home() {
     <div style={{ fontFamily: "Arial", padding: 20 }}>
       <header style={styles.header}>
         <h2 style={{ color: "#00c38e" }}>Painel Administrativo - {user}</h2>
-        <button onClick={logout} style={{ ...styles.button, backgroundColor: "#ff4d4d" }}>
+        <button
+          onClick={logout}
+          style={{ ...styles.button, backgroundColor: "#ff4d4d" }}
+        >
           Sair
         </button>
       </header>
 
-      {/* Menu lateral simples */}
       <nav style={styles.nav}>
         <button
-          style={selecao === "hospedes" ? styles.navButtonActive : styles.navButton}
+          style={
+            selecao === "hospedes" ? styles.navButtonActive : styles.navButton
+          }
           onClick={() => setSelecao("hospedes")}
         >
           Hóspedes
         </button>
         <button
-          style={selecao === "reservas" ? styles.navButtonActive : styles.navButton}
+          style={
+            selecao === "reservas" ? styles.navButtonActive : styles.navButton
+          }
           onClick={() => setSelecao("reservas")}
         >
           Reservas
@@ -73,7 +113,6 @@ export default function Home() {
         </button>
       </nav>
 
-      {/* Conteúdo da seção selecionada */}
       <section style={{ marginTop: 20 }}>
         {selecao === "hospedes" && (
           <HospedesSection hospedes={hospedes} setHospedes={setHospedes} />
@@ -86,13 +125,14 @@ export default function Home() {
             hoteis={hoteis}
           />
         )}
-        {selecao === "hoteis" && <HoteisSection hoteis={hoteis} setHoteis={setHoteis} />}
+        {selecao === "hoteis" && (
+          <HoteisSection hoteis={hoteis} setHoteis={setHoteis} />
+        )}
       </section>
     </div>
   );
 }
 
-// Seção de hóspedes
 function HospedesSection({ hospedes, setHospedes }) {
   const [nome, setNome] = useState("");
 
@@ -104,8 +144,7 @@ function HospedesSection({ hospedes, setHospedes }) {
   };
 
   const remover = (index) => {
-    const novaLista = hospedes.filter((_, i) => i !== index);
-    setHospedes(novaLista);
+    setHospedes(hospedes.filter((_, i) => i !== index));
   };
 
   return (
@@ -135,7 +174,6 @@ function HospedesSection({ hospedes, setHospedes }) {
   );
 }
 
-// Seção de reservas
 function ReservasSection({ reservas, setReservas, hospedes, hoteis }) {
   const [hospedeSelecionado, setHospedeSelecionado] = useState("");
   const [hotelSelecionado, setHotelSelecionado] = useState("");
@@ -154,8 +192,7 @@ function ReservasSection({ reservas, setReservas, hospedes, hoteis }) {
   };
 
   const remover = (index) => {
-    const novaLista = reservas.filter((_, i) => i !== index);
-    setReservas(novaLista);
+    setReservas(reservas.filter((_, i) => i !== index));
   };
 
   return (
@@ -214,7 +251,6 @@ function ReservasSection({ reservas, setReservas, hospedes, hoteis }) {
   );
 }
 
-// Seção de hotéis/pousadas
 function HoteisSection({ hoteis, setHoteis }) {
   const [nome, setNome] = useState("");
 
@@ -226,8 +262,7 @@ function HoteisSection({ hoteis, setHoteis }) {
   };
 
   const remover = (index) => {
-    const novaLista = hoteis.filter((_, i) => i !== index);
-    setHoteis(novaLista);
+    setHoteis(hoteis.filter((_, i) => i !== index));
   };
 
   return (
@@ -257,24 +292,13 @@ function HoteisSection({ hoteis, setHoteis }) {
   );
 }
 
-// Estilos simples reutilizáveis
 const styles = {
-  loginContainer: {
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f0f0f0",
-    padding: 20,
-  },
   input: {
     padding: 10,
     fontSize: 16,
     borderRadius: 6,
     border: "1px solid #ccc",
     marginBottom: 10,
-    width: 300,
   },
   button: {
     padding: "10px 20px",
