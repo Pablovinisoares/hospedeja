@@ -7,7 +7,7 @@ export default function Home() {
   const [reservas, setReservas] = useState([]);
 
   const imagemFundo =
-    "https://images.unsplash.com/photo-1613061529720-0ad838da02eb?auto=format&fit=crop&w=1400&q=80";
+    "https://images.unsplash.com/photo-1584448093330-d98f5ab2e7e3?auto=format&fit=crop&w=1400&q=80";
 
   useEffect(() => {
     const salvas = localStorage.getItem("reservas");
@@ -39,7 +39,7 @@ export default function Home() {
       texto += `${i + 1}. ${r.nome} – Entrada: ${r.checkin}, Saída: ${r.checkout}\n`;
     });
     navigator.clipboard.writeText(texto);
-    alert("Relatório copiado! Agora cole no WhatsApp ou Word.");
+    alert("Relatório copiado! Cole no Word ou WhatsApp.");
   };
 
   const enviarWhatsapp = () => {
@@ -52,7 +52,7 @@ export default function Home() {
   };
 
   return (
-    <div style={{ fontFamily: "Poppins, sans-serif", backgroundColor: "#f9fbfc" }}>
+    <div style={{ fontFamily: "Poppins, sans-serif", backgroundColor: "#f0f9ff" }}>
       <div
         style={{
           backgroundImage: `url(${imagemFundo})`,
@@ -68,14 +68,12 @@ export default function Home() {
           padding: 30,
         }}
       >
-        <h1 style={{ fontSize: "3rem" }}>🌊 Pousada Paraíso</h1>
-        <p style={{ fontSize: "1.2rem" }}>
-          Controle de reservas simples, bonito e gratuito.
-        </p>
+        <h1 style={{ fontSize: "3rem" }}>🏖️ Praia Bela Pousada</h1>
+        <p style={{ fontSize: "1.2rem" }}>Sistema simples e bonito de reservas.</p>
       </div>
 
       <div style={{ padding: 30, maxWidth: 600, margin: "0 auto" }}>
-        <h2 style={{ color: "#00695c" }}>Adicionar Reserva</h2>
+        <h2 style={{ color: "#0277bd" }}>Adicionar Reserva</h2>
 
         <input
           placeholder="Nome do hóspede"
@@ -144,7 +142,7 @@ const estilo = {
     padding: "12px 24px",
     borderRadius: 6,
     border: "none",
-    backgroundColor: "#00695c",
+    backgroundColor: "#0288d1",
     color: "white",
     fontWeight: "bold",
     cursor: "pointer",
@@ -155,7 +153,7 @@ const estilo = {
     padding: "4px 10px",
     fontSize: 14,
     borderRadius: 6,
-    backgroundColor: "#c62828",
+    backgroundColor: "#e53935",
     color: "white",
     border: "none",
     cursor: "pointer",
@@ -165,7 +163,7 @@ const estilo = {
     padding: "10px 20px",
     fontSize: 16,
     borderRadius: 8,
-    backgroundColor: "#1976d2",
+    backgroundColor: "#1e88e5",
     color: "white",
     border: "none",
     cursor: "pointer",
